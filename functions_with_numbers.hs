@@ -32,6 +32,7 @@ slowFib :: Int -> Int
 slowFib 0 = 0 
 slowFib 1 = 1
 slowFib n = slowFib(n-1) + slowFib(n-2)
+
 quickFib :: Int -> Int
 quickFib 0 = 0
 quickFib 1 = 1
@@ -45,4 +46,4 @@ quickFib n
         qfhn_1 = quickFib(halfn-1)
         qfhn1 = quickFib(halfn1)
         qfhn1_1 = quickFib(halfn1-1)
-        
+

@@ -1,6 +1,7 @@
 myLength :: [Int] -> Int
 myLength [] = 0
 myLength (x:xs) = 1 + myLength(xs)
+
 myMaximum :: [Int] -> Int
 myMaximum (x:[]) = x
 myMaximum (x:xs) = max x (myMaximum xs)
@@ -8,6 +9,7 @@ myMaximum (x:xs) = max x (myMaximum xs)
 inmersionaverage :: ([Int], Int, Int) -> Float
 inmersionaverage ([],total,len) = fromIntegral(total)/fromIntegral(len)
 inmersionaverage (x:xs,total,len) = inmersionaverage(xs,total+x,len+1)
+
 average :: [Int] -> Float
 average [] = 0.0
 average (xs) = inmersionaverage(xs,0,0)
@@ -15,6 +17,7 @@ average (xs) = inmersionaverage(xs,0,0)
 myReverse :: [a] -> [a]
 myReverse [] = []
 myReverse (x:xs) = myReverse(xs) ++ [x]
+
 buildPalindrome :: [Int] -> [Int]
 buildPalindrome (xs) = myReverse(xs) ++ xs
 
@@ -24,9 +27,11 @@ remove [] m = []
 remove (x:xs) (y:ys)
     | x == y = remove xs (y:ys)
     | x /= y = (remove [x] ys ) ++ (remove xs (y:ys))
+
 flatten :: [[Int]] -> [Int]
 flatten [] = []
 flatten (l:p) = l ++ flatten(p)
+
 oddsNevens :: [Int] -> ([Int],[Int])
 oddsNevens [] = ([],[])
 oddsNevens (x:xs)
