@@ -12,23 +12,20 @@ myMap f (x:xs) = [f x] ++ myMap f xs
 {-Define a function pam :: [Int] -> [Int -> Int] -> [[Int]] that, given a list of integers and a list of functions from integers to integers, returns the list consisting if applying each of the functions in the second list to the elements in the first list.-}
 
 pam :: [Int] -> [Int -> Int] -> [[Int]]
-pam [] _ = []
-pam _ [] = []
-pam x (f:fs) = [myMap f x] ++ pam x fs
-
---Auxiliary stuff
-
-myZipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
-myZipWith _ [] _ = []
-myZipWith _ _ [] = []
-myZipWith f (x:xs) (y:ys) = [f x y] ++ myZipWith f xs ys
+pam x f = map (\j->map j x) f
+--pam [] _ = []
+--pam _ [] = []
+--pam x (f:fs) = [myMap f x] ++ pam x fs
 
 {-Define a function pam2 :: [Int] -> [Int -> Int] -> [[Int]] that, given a list of integers and a list of functions from integers to integers, returns the list of lists where each list if the result of applying, one after the other, the function in the second list to each element in the first list.-}
 
 pam2 :: [Int] -> [Int -> Int] -> [[Int]]
 pam2 [] _ = []
-pam2 _ [] = []
-pam2 (x:xs) f = [myZipWith ($) f (repeat x)] ++ pam2 (xs) f
+pam2 (x:xs) f = [map (\j-> j x) f] ++ pam2 xs f
+--pam2 [] _ = []
+--pam2 _ [] = []
+--pam2 (x:xs) f = [ zipWith ($) f (repeat x)] ++ pam2 (xs) f
+--pam2 (x:xs) f = [ myMap (f) x] ++ pam2 (xs) f
 
 {-Define a function filterFoldl :: (Int -> Bool) -> (Int -> Int -> Int) -> Int -> [Int] -> Int that returns a fold of all the elements that satisfy the given predicate.-}
 
