@@ -25,7 +25,8 @@ Si volem navegar a foul, selectBranch del node odor amb Just 1.
 ## Usage
 Des de la terminal
 ```bash
-ghci dts.hs
+ghc dts.hs
+./dts
 ```
 Des de el GHCI
 ```haskell
